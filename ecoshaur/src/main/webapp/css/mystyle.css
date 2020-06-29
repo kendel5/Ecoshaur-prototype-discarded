@@ -1,0 +1,141 @@
+/* mystyle.css*/
+/*�븳湲� �씤肄붾뵫 utf-8*/
+
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  
+  p {font-size: 15px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: #191970; /* MidnightBlue */
+    color: #ffffff;
+  }
+  .bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size:18px;
+  }
+  
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  letter-spacing: 5px;
+}
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  
+
+
+section
+{
+    padding: 120px 0 0;
+    
+}
+
+.box
+{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    transition: .5s;
+    margin-bottom: 35px;
+}
+
+.box:hover
+{
+    transform: translateY(-30px);
+    box-shadow: 0 50px 50x rgba(0,0,0,.5);
+}
+
+.box .imgbox
+{
+    position: relative;
+}
+
+.box .imgbox img
+{
+    transition: .5s;
+}
+
+.box:hover .imgbox img
+{
+   opacity: .5;
+    transform: translateY(-40px);
+}
+
+.box .content
+{
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: .5s;
+    opacity: 0;
+    
+}
+
+.box:hover .content
+{
+    opacity: 1;
+    bottom: 0;
+}
+
+.box .content h3
+{
+    font-size: 48px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.box .content p
+{
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.box .content .btnD
+{
+    border: none;
+    background: #ff0000;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-weight: 700;
+    transition: .5s;
+}
+
+.box .content .btnD:hover
+{
+    background: #ff3232;
+    
+}
+

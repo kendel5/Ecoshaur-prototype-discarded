@@ -9,27 +9,27 @@
 
 <style>
 body {
-   background-image: url("https://cdn.imweb.me/thumbnail/20200415/590a940fa6c5a.jpg");
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: 50% 50%;
-   height: 937px;
-   border-color: transparent;
+	background-image: url("https://cdn.imweb.me/thumbnail/20200415/590a940fa6c5a.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 937px;
+	border-color: transparent;
 }
 header{
-   position:absolute;
-   width:100%;
-   top:0;
-   z-index:11;
-   font-color:white;
+	position:absolute;
+	width:100%;
+	top:0;
+	z-index:11;
+	font-color:white;
 }
 .banner {
-   height:100vh;
-   position:relative;
-   width:100%;
-   overflow: hidden;
-   margin-top:30px;
-   margin-left: 200px;
+	height:100vh;
+	position:relative;
+	width:100%;
+	overflow: hidden;
+	margin-top:30px;
+	margin-left: 200px;
 }
 
 .banner-innner {
@@ -49,15 +49,15 @@ header{
     font-weight: 800;
     line-height: 50px;
     text-shadow: 1px 2px #000;
-   margin-bottom:15px;
-   text-align: right;
+	margin-bottom:15px;
+	text-align: right;
 }
 
 .banner-left p {
     color: #fff;
     letter-spacing: 0.5px;
     line-height: 28px;
-   margin-bottom:30px;
+	margin-bottom:30px;
 }
 
 .custom-btn {
@@ -65,7 +65,7 @@ header{
     background: #E91E63;
     color: #fff;
     letter-spacing: 2.5px;
-   transition:0.8 ease;
+	transition:0.8 ease;
 }
 
 .banner-left a {
@@ -76,21 +76,21 @@ header{
     letter-spacing: 2.5px;
     padding: 8px 35px;
     border-radius: 4px;
-   transition:0.8 ease;
+	transition:0.8 ease;
 }
 
 .banner-left a:hover{
-   letter-spacing:3px;
-   transition:0.8 ease;
+	letter-spacing:3px;
+	transition:0.8 ease;
 }
 
 .custom-btn:hover{
-   letter-spacing:3px;
-   transition:0.8 ease;
+	letter-spacing:3px;
+	transition:0.8 ease;
 }
 
 .navbar-light .navbar-brand {
-    color:    #fff;
+    color: 	#fff;
     font-weight: 700;
     font-size: 30px;
     text-transform: uppercase;
@@ -100,13 +100,13 @@ header{
     color: #fff;
 }
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link:hover {
-    color:    #DC143C;
+    color: 	#DC143C;
 }
 .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
     color: #fff;
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color:    #DC143C;
+    color: 	#DC143C;
 }
 
 .dropdown-menu {
@@ -121,7 +121,7 @@ span.navbar-toggler-icon {
     background-image: url(https://i.ibb.co/1v9M0dZ/menu.png) !important;
     width: 25px;
     height: 25px;
-   cursor:pointer;
+	cursor:pointer;
 }
 
 /* 드롭다운 서브메뉴 배경 */
@@ -144,17 +144,17 @@ a.dropdown-item {
 }
 
 .banner{
-   padding:120px 0;
-   height: auto;
+	padding:120px 0;
+	height: auto;
 }
 
 .nav-color{
-   background:#fff;
-   border-color: transparent;
+	background:#fff;
+	border-color: transparent;
 }
 
 .navbar-light .navbar-nav .nav-link{
-   padding-left:0;
+	padding-left:0;
 }
 .banner-innner {
     padding: 120px 0;
@@ -166,7 +166,7 @@ a.dropdown-item {
 }
 
 .nav-link{
-   rgb(90, 187, 255);
+	rgb(90, 187, 255);
 }
 
 /* 검색창 */
@@ -308,101 +308,101 @@ a.dropdown-item {
 </style>
 
 <head>
-   <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-<!-- 헤더 시작    -->
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+<!-- 헤더 시작	 -->
 <header>
 <nav class="navbar container navbar-expand-lg nav-color">
-     <input type="image" name="button" src="images/ㄹㅇ공룡.png" width="100" height="100">
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item"> <a class="nav-link" href="ranking/Top.jsp">TOP</a> </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link" href="Category.do" id="navbarDropdown" role="button">대여목록</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="./category/CategoryDT.do?category=컴퓨터">컴퓨터</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category=TV/영상가전">TV/영상가전</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category=음향기기">음향기기</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category=콘솔/게이밍">콘솔/게이밍</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category=카메라">카메라</a>
-         </div>
-        </li>
-        <li class="nav-item"> <a class="nav-link" href="Community.jsp">커뮤니티</a> </li>
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">고객센터</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="community/Notice.jsp">공지사항</a>
-           <a class="dropdown-item" href="community/Qna.jsp">QnA</a>
-         </div>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="member/Login.jsp">로그인/회원가입</a>
-           <a class="dropdown-item" href="member/Mypage.jsp">회원정보</a>
-         </div>
-        </li>
-      
-      <!-- 검색창/돋보기 -->
-      <li>
-      <form id="content">
-         <!-- 돋보기 아이콘(원형) -->
-         <input type="text" name="input1" class="input1" id="search-input"
-                        style="margin-top: 35px; margin-right: 0px;
-                         margin-left: 100px; border-top-width: 4px;">
-         <!-- 돋보기 아이콘(막대기) -->           
-         <button type="reset" class="search" id="search-btn"
-               style="left: 100px; top: 33px;">
-         </button>
-      </form>
-      </li>
-      </ul>
-     </div>
-    </nav>
+	  <input type="image" name="button" src="images/ㄹㅇ공룡.png" width="100" height="100">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+		<ul class="navbar-nav">
+	     <li class="nav-item"> <a class="nav-link" href="ranking/Top.jsp">TOP</a> </li>
+		  <li class="nav-item dropdown">
+		  	<a class="nav-link" href="Category.do" id="navbarDropdown" role="button">대여목록</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="./category/CategoryDT.do?category=컴퓨터">컴퓨터</a>
+			  <a class="dropdown-item" href="./category/CategoryDT.do?category=TV/영상가전">TV/영상가전</a>
+			  <a class="dropdown-item" href="./category/CategoryDT.do?category=음향기기">음향기기</a>
+			  <a class="dropdown-item" href="./category/CategoryDT.do?category=콘솔/게이밍">콘솔/게이밍</a>
+			  <a class="dropdown-item" href="./category/CategoryDT.do?category=카메라">카메라</a>
+			</div>
+		  </li>
+		  <li class="nav-item"> <a class="nav-link" href="Community.jsp">커뮤니티</a> </li>
+		   <li class="nav-item dropdown">
+		  	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">고객센터</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="community/Notice.jsp">공지사항</a>
+			  <a class="dropdown-item" href="community/Qna.jsp">QnA</a>
+			</div>
+		  </li>
+		  <li class="nav-item dropdown">
+		  	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="member/Login.jsp">로그인/회원가입</a>
+			  <a class="dropdown-item" href="member/Mypage.jsp">회원정보</a>
+			</div>
+		  </li>
+		
+		<!-- 검색창/돋보기 -->
+		<li>
+		<form id="content">
+			<!-- 돋보기 아이콘(원형) -->
+			<input type="text" name="input1" class="input1" id="search-input"
+	   	   	   	   style="margin-top: 35px; margin-right: 0px;
+    	      		      margin-left: 100px; border-top-width: 4px;">
+			<!-- 돋보기 아이콘(막대기) -->			  
+			<button type="reset" class="search" id="search-btn"
+					style="left: 100px; top: 33px;">
+			</button>
+		</form>
+		</li>
+		</ul>
+	  </div>
+	 </nav>
  
     <!-- 검색 기능 -->
-   <script>
-      const input = document.getElementById("search-input");
-      const searchBtn = document.getElementById("search-btn");
-      const expand = () => {
-         searchBtn.classList.toggle("close");
-         input.classList.toggle("square");
-      };
-      searchBtn.addEventListener("click", expand);
-   </script>
+	<script>
+		const input = document.getElementById("search-input");
+		const searchBtn = document.getElementById("search-btn");
+		const expand = () => {
+			searchBtn.classList.toggle("close");
+			input.classList.toggle("square");
+		};
+		searchBtn.addEventListener("click", expand);
+	</script>
     </header>
 </head>
-   
-<body>    
-   <div class="banner">
+	
+<body>	 
+	<div class="banner">
       <div class="banner-innner">
-       <div class="container">
-        <div class="row">
-        
-          <div class="col-md-12">
-           <div class="banner-left">
-             <h1> 비싼 가격 때문에 고민이라면 <br> 대여하자! </h1>
-            <a href="#">글작성하기</a>
-           </div>
-         </div>
+	    <div class="container">
+		  <div class="row">
+		  
+		    <div class="col-md-12">
+			  <div class="banner-left">
+			    <h1> 비싼 가격 때문에 고민이라면 <br> 대여하자! </h1>
+				<a href="#">글작성하기</a>
+			  </div>
+			</div>
 
-        </div>
-      </div>
-     </div>
-    </div>   
+		  </div>
+		</div>
+	  </div>
+    </div>	
 <!-- banner closed with header -->
 
 
 
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 </html>

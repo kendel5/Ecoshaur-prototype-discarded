@@ -13,5 +13,13 @@ nav.category .list .menu>li{ float:left; width:171px; border-left:#dddddd solid 
 nav.category .list .menu>li:nth-child(6n+1){ }
 nav.category .list .menu>li>a{ height:33px; line-height:33px; font-size:14px; padding:0 18px;  color:#444444; display:block;  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 nav.category .list .menu>li.active>a,
-nav.category .list .menu>li>a:hover{ color:#792b86;font-weight:bold;}
-nav.category .list .menu>li.active>a:before{ position:absolute; left:-1px; top:5px; width:4px; height:20px; display:block; background-color:#792b86; content:""; }
+nav.category .list .menu>li>a:hover{ color:#007eff;font-weight:bold;}
+nav.category .list .menu>li.active>a:before{ position:absolute; left:-1px; top:5px; width:4px; height:20px; display:block; background-color:#007eff; content:""; }
+
+
+
+
+
+
+
+

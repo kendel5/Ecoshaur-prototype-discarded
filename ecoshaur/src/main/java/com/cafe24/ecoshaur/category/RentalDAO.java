@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cafe24.ecoshaur.category.RentalDTO;
-
-import kr.co.mymelon.media.MediaDTO;
+import com.cafe24.ecoshaur.category.CategoryDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
 
 @Component
+
+
+
 public class RentalDAO {
     @Autowired
     private DBOpen dbopen;
@@ -26,181 +28,221 @@ public class RentalDAO {
     ResultSet rs = null;
     StringBuilder sql = null;
     ArrayList<RentalDTO> list = null;
-
+    ArrayList<CategoryDTO> category_list = null;
     public RentalDAO() { }
-    
-    public ArrayList<RentalDTO> list(RentalDTO dto){
-      try{
+
+  //목록
+    public ArrayList<RentalDTO> list() {
+      try {
+        RentalDTO dto = new RentalDTO();
         con = dbopen.getConnection();
         sql = new StringBuilder();
-        sql.append(" SELECT Product_No, Title, Sub-title, Product_name, Description, Price_daily, Deposit, Total_quantity, Remaining_quantity, thmb_name thmb_size, Image_name, Image_size, RegDate ID, Category_code ");
-        sql.append(" FROM Rental_list ");
-        sql.append(" WHERE availability='Y' AND category_code = ?");
-        sql.append(" ORDER BY Product_No DESC");
+        sql.append(" SELECT product_no, title, sub_title, price_daily, deposit, total_quantity, remaining_quantity, thmb_name, id ");
+        sql.append(" FROM RENTAL_LIST ");
+        sql.append(" WHERE availability='Y' ");
+        sql.append(" ORDER BY product_no DESC ");
         pstmt = con.prepareStatement(sql.toString());
-        pstmt.setString(1, dto.getCategory_code());
         rs = pstmt.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
           list = new ArrayList<RentalDTO>();
           do {
             dto = new RentalDTO();
-            dto.setProduct_no(rs.getString("product_no"));
-            dto.setProduct_name(rs.getString("product_name"));
-            dto.setTitle(rs.getString("title"));
-            dto.setSub_title(rs.getString("sub_title"));
-            dto.setDescription(rs.getString("description"));
-            dto.setPrice_daily(rs.getString("price_daily"));
+            dto.setProduct_no(rs.getString("product_no").trim());
+            dto.setTitle(rs.getString("title").trim());
+            dto.setSub_title(rs.getString("sub_title").trim());
+            dto.setPrice_daily(rs.getInt("price_daily"));
             dto.setDeposit(rs.getInt("deposit"));
             dto.setTotal_quantity(rs.getInt("total_quantity"));
             dto.setRemaining_quantity(rs.getInt("remaining_quantity"));
-            dto.setThmb_name(rs.getString("thmb_name"));
-            dto.setThmb_size(rs.getInt("thmb_size"));
-            dto.setImage_name(rs.getString("image_name"));
-            dto.setImage_size(rs.getLong("image_size"));
-            dto.setReg_date(rs.getString("reg_date"));
-            dto.setId(rs.getString("id"));
-            dto.setCategory_code(rs.getString("category_code"));
-
-            
+            dto.setThmb_name(rs.getString("thmb_name").trim());
+            dto.setId(rs.getString("id").trim());
             list.add(dto);
-          } while(rs.next());
-        }else{
+          } while (rs.next());
+        } else {
           list = null;
-        }//if end
+        } // if end
 
-      }catch(Exception e){
-         System.out.println("Rental 목록 실패:"+e);
-      }finally{
-         DBClose.close(con, pstmt, rs);
-      }//end
+      } catch (Exception e) {
+        System.out.println("Category목록 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
       return list;
-    }//list() end
+    }// list() end
     
-    
-    public int register(RentalDTO dto) {
-      int cnt = 0;
+  //세부목록
+    public ArrayList<RentalDTO> listDT(String category) {
       try {
+        RentalDTO dto = new RentalDTO();
         con = dbopen.getConnection();
         sql = new StringBuilder();
-        sql.append(" INSERT INTO Rental(Product_No, Title, Sub-title, Product_name, Description, Price_daily, Deposit, Total_quantity, thmb_name thmb_size, Image_name, Image_size, RegDate ID, Category_code ");
-        sql.append(" VALUES((SELECT NVL(MAX(Product_No), 0)+1 as Product_No FROM Rental_list), ?, sysdate, ?, ?, ?, ?)"); 
+        sql.append(" SELECT product_no, title, sub_title, price_daily, deposit, total_quantity, remaining_quantity, thmb_name, id ");
+        sql.append(" FROM RENTAL_LIST A ");
+        sql.append(" INNER JOIN RENTAL_CATEGORY B ");
+        sql.append(" ON A.Category_code = B.code ");
+        if(category.equals("컴퓨터"))
+          sql.append(" WHERE availability='Y' and B.major = '컴퓨터' ");
+        else if(category.equals("TV/영상가전"))
+          sql.append(" WHERE availability='Y' and B.major = 'TV/영상가전' ");
+        else if(category.equals("음향기기"))
+          sql.append(" WHERE availability='Y' and B.major = '음향기기' ");
+        else if(category.equals("콘솔/게이밍"))
+          sql.append(" WHERE availability='Y' and B.major = '콘솔/게이밍' ");
+        else
+          sql.append(" WHERE availability='Y' and B.major = '카메라' ");
+        sql.append(" ORDER BY product_no DESC ");
         pstmt = con.prepareStatement(sql.toString());
-        pstmt.setString(1, dto.getProduct_no());
-        pstmt.setString(2, dto.getProduct_name());
-        pstmt.setString(3, dto.getTitle());
-        pstmt.setString(4, dto.getSub_title());
-        pstmt.setString(5, dto.getDescription());
-        pstmt.setString(6, dto.getPrice_daily());
-        pstmt.setInt(7, dto.getDeposit());
-        pstmt.setInt(8, dto.getTotal_quantity());
-        pstmt.setString(9, dto.getThmb_name());
-        pstmt.setLong(10, dto.getThmb_size());
-        pstmt.setString(11, dto.getImage_name());
-        pstmt.setLong(12, dto.getImage_size());
-        pstmt.setString(13, dto.getReg_date());
-        pstmt.setString(14, dto.getId());
-        pstmt.setString(15, dto.getCategory_code());
-        
-        cnt = pstmt.executeUpdate();
-      } catch (Exception e) {
-          System.out.println("기기 등록 실패: "+e);
-      } finally {
-          dbclose.close(con, pstmt, rs);
-      }//end
-      return cnt;
-    }//register() end 
-    
-    
-    public RentalDTO read(int Product_No) {
-      RentalDTO dto = null;
-      try {
-        con = dbopen.getConnection();
-        sql = new StringBuilder();
-        sql.append(" SELECT Product_No, Title, Sub-title, Product_name, Description, Price_daily, Deposit, Total_quantity, Remaining_quantity, thmb_name thmb_size, Image_name, Image_size, RegDate ID, Category_code ");
-        sql.append(" FROM Rental_list ");
-        sql.append(" WHERE Product_No = ?"); 
-        pstmt = con.prepareStatement(sql.toString());
-        pstmt.setInt(1, Product_No);
         rs = pstmt.executeQuery();
-        if(rs.next()) {
-          dto = new RentalDTO();
-          dto.setProduct_no(rs.getString("product_no"));
-          dto.setProduct_name(rs.getString("product_name"));
-          dto.setTitle(rs.getString("title"));
-          dto.setSub_title(rs.getString("sub_title"));
-          dto.setDescription(rs.getString("description"));
-          dto.setPrice_daily(rs.getString("price_daily"));
-          dto.setDeposit(rs.getInt("deposit"));
-          dto.setTotal_quantity(rs.getInt("total_quantity"));
-          dto.setRemaining_quantity(rs.getInt("remaining_quantity"));
-          dto.setThmb_name(rs.getString("thmb_name"));
-          dto.setThmb_size(rs.getInt("thmb_size"));
-          dto.setImage_name(rs.getString("image_name"));
-          dto.setImage_size(rs.getLong("image_size"));
-          dto.setReg_date(rs.getString("reg_date"));
-          dto.setId(rs.getString("id"));
-          dto.setCategory_code(rs.getString("category_code"));
-        }//if end
+        if (rs.next()) {
+          list = new ArrayList<RentalDTO>();
+          do {
+            dto = new RentalDTO();
+            dto.setProduct_no(rs.getString("product_no").trim());
+            dto.setTitle(rs.getString("title").trim());
+            dto.setSub_title(rs.getString("sub_title").trim());
+            dto.setPrice_daily(rs.getInt("price_daily"));
+            dto.setDeposit(rs.getInt("deposit"));
+            dto.setTotal_quantity(rs.getInt("total_quantity"));
+            dto.setRemaining_quantity(rs.getInt("remaining_quantity"));
+            dto.setThmb_name(rs.getString("thmb_name").trim());
+            dto.setId(rs.getString("id").trim());
+            list.add(dto);
+          } while (rs.next());
+        } else {
+          list = null;
+        } // if end
 
       } catch (Exception e) {
-          System.out.println("상세 보기 실패: "+e);
+        System.out.println("Category세부목록 실패:" + e);
       } finally {
-          dbclose.close(con, pstmt, rs);
-      }//end
-      return dto;
-    }//read() end
+        DBClose.close(con, pstmt, rs);
+      }
+      return list;
+    }// listDT() end
     
     
-    public int delete(String product_no) {
-      int cnt = 0;
+    
+    
+    //카테고리 명
+    public ArrayList<CategoryDTO> category(String category) {
       try {
+        CategoryDTO dto = new CategoryDTO();
         con = dbopen.getConnection();
         sql = new StringBuilder();
-        sql.append(" DELETE FROM RENTAL_LIST ");
-        sql.append(" WHERE Product_No =? ");  
+        sql.append(" SELECT major, minor, code ");
+        sql.append(" FROM RENTAL_CATEGORY ");
+        if(category.equals("컴퓨터"))
+          sql.append(" WHERE major = '컴퓨터' ");
+        else if(category.equals("TV/영상가전"))
+          sql.append(" WHERE major = 'TV/영상가전' ");
+        else if(category.equals("음향기기"))
+          sql.append(" WHERE major = '음향기기' ");
+        else if(category.equals("콘솔/게이밍"))
+          sql.append(" WHERE major = '콘솔/게이밍' ");
+        else
+          sql.append(" WHERE major = '카메라' ");
+        sql.append(" ORDER BY major ");
         pstmt = con.prepareStatement(sql.toString());
-        pstmt.setString(1, product_no);
-        cnt = pstmt.executeUpdate();
-      } catch (Exception e) {
-          System.out.println("삭제 실패: "+e);
-      } finally {
-          dbclose.close(con, pstmt);
-      }//end
-      return cnt;
-    }//delete() end
-    
-    
-    public int update(RentalDTO dto) {
-      int cnt = 0; 
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          category_list = new ArrayList<CategoryDTO>();
+          do {
+            dto = new CategoryDTO();
+            dto.setMajor(rs.getString("major").trim());
+            dto.setMinor(rs.getString("minor").trim());
+            dto.setCode(rs.getString("code").trim());
+            category_list.add(dto);
+          } while (rs.next());
+        } else {
+          list = null;
+        } // if end
 
+      } catch (Exception e) {
+        System.out.println("Category세부목록 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return category_list;
+    }// category() end
+    
+    
+    
+    
+    
+    
+    //선택카테고리 가져오기
+    public ArrayList<RentalDTO> select_listDT(String[] category, int size) {
       try {
+        RentalDTO dto = new RentalDTO();
         con = dbopen.getConnection();
         sql = new StringBuilder();
-        sql.append(" UPDATE RNETAL_LIST ");
-        sql.append(" SET Category_code =?, product_name=?, title=?, sub_title=?, Description=?, Price_daily=?, Deposit=?, Total_quantity=?, Thmb_name=?, Thmb_size=?, Image_name=?, Image_size=? ");
-        sql.append(" WHERE Product_No =? "); 
+        sql.append(" SELECT product_no, title, sub_title, price_daily, deposit, total_quantity, remaining_quantity, thmb_name, id ");
+        sql.append(" FROM RENTAL_LIST A ");
+        sql.append(" INNER JOIN RENTAL_CATEGORY B ");
+        sql.append(" ON A.Category_code = B.code ");
+        sql.append(" WHERE availability='Y'");
+        for(int i=0;i<size;i++) {
+          sql.append(" and B.minor = '" + category[i] + "' ");
+        }
+        sql.append(" ORDER BY product_no DESC ");
         pstmt = con.prepareStatement(sql.toString());
-        pstmt.setString(1, dto.getCategory_code());
-        pstmt.setString(2, dto.getProduct_name());
-        pstmt.setString(3, dto.getTitle());
-        pstmt.setString(4, dto.getSub_title());
-        pstmt.setString(5, dto.getDescription());
-        pstmt.setString(6, dto.getPrice_daily());
-        pstmt.setInt(7, dto.getDeposit());
-        pstmt.setInt(8, dto.getTotal_quantity());
-        pstmt.setString(9, dto.getThmb_name());
-        pstmt.setLong(10, dto.getThmb_size());
-        pstmt.setString(11, dto.getImage_name());
-        pstmt.setLong(12, dto.getImage_size());
-        cnt = pstmt.executeUpdate();
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          list = new ArrayList<RentalDTO>();
+          do {
+            dto = new RentalDTO();
+            dto.setProduct_no(rs.getString("product_no").trim());
+            dto.setTitle(rs.getString("title").trim());
+            dto.setSub_title(rs.getString("sub_title").trim());
+            dto.setPrice_daily(rs.getInt("price_daily"));
+            dto.setDeposit(rs.getInt("deposit"));
+            dto.setTotal_quantity(rs.getInt("total_quantity"));
+            dto.setRemaining_quantity(rs.getInt("remaining_quantity"));
+            dto.setThmb_name(rs.getString("thmb_name").trim()); 
+            dto.setId(rs.getString("id").trim());
+            list.add(dto);
+          } while (rs.next());
+        } else {
+          list = null;
+        } // if end
 
       } catch (Exception e) {
-        System.out.println("수정 실패: "+e);
+        System.out.println("Category세부목록 실패:" + e);
       } finally {
-          dbclose.close(con, pstmt, rs);
-      }//end
-      return cnt;
-    }//update() end  
-
+        DBClose.close(con, pstmt, rs);
+      }
+      return list;
+    }// listDT() end
+   
     
+    // 소분류 가져오기
+    public ArrayList<CategoryDTO> MNcategory() {
+      try {
+        CategoryDTO dto = new CategoryDTO();
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT minor ");
+        sql.append(" FROM RENTAL_CATEGORY ");
+        sql.append(" ORDER BY minor ");
+        pstmt = con.prepareStatement(sql.toString());
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          category_list = new ArrayList<CategoryDTO>();
+          do {
+            dto = new CategoryDTO();
+            dto.setMinor(rs.getString("minor").trim());
+            category_list.add(dto);
+          } while (rs.next());
+        } else {
+          list = null;
+        } // if end
+
+      } catch (Exception e) {
+        System.out.println("Category세부목록 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return category_list;
+    }// category() end
+
 }

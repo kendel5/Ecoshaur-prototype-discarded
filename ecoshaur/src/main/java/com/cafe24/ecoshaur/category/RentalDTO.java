@@ -8,11 +8,11 @@ public class RentalDTO {
   private String title;
   private String sub_title;
   private String description;
-  private String price_daily;
+  private int price_daily;
   private int deposit;
   private int total_quantity;
   private int remaining_quantity;
-  private String thmb_name; //파일 자체가  db에 안 담김!!!
+  private String thmb_name;
   private long thmb_size;
   private String image_name;
   private long image_size;
@@ -20,42 +20,39 @@ public class RentalDTO {
   private String id;
   private String category_code;
   private char availability;
-  
+//---------------------------------------  
   //1)스프링 파일 객체 멤버 변수 선언
-  // category/register.jsp
-  // <input type='file' name='thmbMF'>
-  private MultipartFile thmbMF;
+  //<input type='file' name='posterMF'>
+  private MultipartFile posterMF;
   
-  private MultipartFile imageMF;
+  //<input type='file' name='filenameMF'>
+  private MultipartFile filenameMF;
   
   //2)getter와 setter작성
-  public MultipartFile getThmbMF() {
-    return thmbMF;
+  public MultipartFile getPosterMF() {
+    return posterMF;
   }
 
-
-  public void setThmbMF(MultipartFile thmbMF) {
-    this.thmbMF = thmbMF;
+  public void setPosterMF(MultipartFile posterMF) {
+    this.posterMF = posterMF;
   }
 
-
-  public MultipartFile getImageMF() {
-    return imageMF;
+  public MultipartFile getFilenameMF() {
+    return filenameMF;
   }
 
-
-  public void setImageMF(MultipartFile imageMF) {
-    this.imageMF = imageMF;
+  public void setFilenameMF(MultipartFile filenameMF) {
+    this.filenameMF = filenameMF;
   }
-
+  
   //3)servlet-context.xml에 스프링빈 등록
 //---------------------------------------
+  
+  public RentalDTO() { }
 
-  public RentalDTO() {  }
-  
-  
+
   public RentalDTO(String product_no, String product_name, String title, String sub_title, String description,
-      String price_daily, int deposit, int total_quantity, int remaining_quantity, String thmb_name, long thmb_size,
+      int price_daily, int deposit, int total_quantity, int remaining_quantity, String thmb_name, long thmb_size,
       String image_name, long image_size, String reg_date, String id, String category_code, char availability) {
     this.product_no = product_no;
     this.product_name = product_name;
@@ -75,9 +72,6 @@ public class RentalDTO {
     this.category_code = category_code;
     this.availability = availability;
   }
-
-
-
 
 
   public String getProduct_no() {
@@ -130,12 +124,12 @@ public class RentalDTO {
   }
 
 
-  public String getPrice_daily() {
+  public int getPrice_daily() {
     return price_daily;
   }
 
 
-  public void setPrice_daily(String price_daily) {
+  public void setPrice_daily(int price_daily) {
     this.price_daily = price_daily;
   }
 
@@ -248,21 +242,6 @@ public class RentalDTO {
   public void setAvailability(char availability) {
     this.availability = availability;
   }
-
-
-  @Override
-  public String toString() {
-    return "RentalDTO [product_no=" + product_no + ", product_name=" + product_name + ", title=" + title
-        + ", sub_title=" + sub_title + ", description=" + description + ", price_daily=" + price_daily + ", deposit="
-        + deposit + ", total_quantity=" + total_quantity + ", remaining_quantity=" + remaining_quantity + ", thmb_name="
-        + thmb_name + ", thmb_size=" + thmb_size + ", image_name=" + image_name + ", image_size=" + image_size
-        + ", reg_date=" + reg_date + ", id=" + id + ", category_code=" + category_code + ", availability="
-        + availability + "]";
-  }
-  
-  
-  
-  
   
   
   

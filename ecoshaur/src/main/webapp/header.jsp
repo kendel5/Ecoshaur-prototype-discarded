@@ -3,31 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/view/color.jspf" %>
-<link href="css/category.css" rel="stylesheet" type="text/css">
+
 
 <!DOCTYPE html>
 <html lang="ko">
 
 <style>
 body {
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: 50% 50%;
-   height: 937px;
-   border-color: transparent;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 937px;
+	border-color: transparent;
 }
 header{
-   position:absolute;
-   width:100%;
-   top:0;
-   z-index:11;
-   font-color:white;
+	position:absolute;
+	width:100%;
+	top:0;
+	z-index:11;
+	font-color:white;
 }
 .banner {
-   height:100vh;
-   position:relative;
-   width:100%;
-   overflow: hidden;
+	height:100vh;
+	position:relative;
+	width:100%;
+	overflow: hidden;
 }
 
 .banner-innner {
@@ -47,14 +47,14 @@ header{
     font-weight: 800;
     line-height: 50px;
     text-shadow: 1px 2px #000;
-   margin-bottom:15px;
+	margin-bottom:15px;
 }
 
 .banner-left p {
     color: #fff;
     letter-spacing: 0.5px;
     line-height: 28px;
-   margin-bottom:30px;
+	margin-bottom:30px;
 }
 
 .custom-btn {
@@ -62,7 +62,7 @@ header{
     background: #E91E63;
     color: #fff;
     letter-spacing: 2.5px;
-   transition:0.8 ease;
+	transition:0.8 ease;
 }
 
 .banner-left a {
@@ -73,21 +73,23 @@ header{
     letter-spacing: 2.5px;
     padding: 8px 35px;
     border-radius: 4px;
-   transition:0.8 ease;
+	transition:0.8 ease;
 }
 
 .banner-left a:hover{
-   letter-spacing:3px;
-   transition:0.8 ease;
+	letter-spacing:3px;
+	transition:0.8 ease;
 }
 
 .custom-btn:hover{
-   letter-spacing:3px;
-   transition:0.8 ease;
+	letter-spacing:3px;
+	transition:0.8 ease;
 }
 
+
+
 .navbar-light .navbar-brand {
-    color:    #fff;
+    color: 	#fff;
     font-weight: 700;
     font-size: 30px;
     text-transform: uppercase;
@@ -97,13 +99,13 @@ header{
     color: #fff;
 }
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link:hover {
-    color:    #DC143C;
+    color: 	#DC143C;
 }
 .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
     color: #fff;
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color:    #DC143C;
+    color: 	#DC143C;
 }
 
 .dropdown-menu {
@@ -118,7 +120,7 @@ span.navbar-toggler-icon {
     background-image: url(https://i.ibb.co/1v9M0dZ/menu.png) !important;
     width: 25px;
     height: 25px;
-   cursor:pointer;
+	cursor:pointer;
 }
 
 /* 드롭다운 서브메뉴 배경 */
@@ -141,17 +143,17 @@ a.dropdown-item {
 }
 
 .banner{
-   padding:120px 0;
-   height: auto;
+	padding:120px 0;
+	height: auto;
 }
 
 .nav-color{
-   background:#fff;
-   border-color: transparent;
+	background:#fff;
+	border-color: transparent;
 }
 
 .navbar-light .navbar-nav .nav-link{
-   padding-left:0;
+	padding-left:0;
 }
 .banner-innner {
     padding: 120px 0;
@@ -163,7 +165,7 @@ a.dropdown-item {
 }
 
 .nav-link{
-   rgb(90, 187, 255);
+	rgb(90, 187, 255);
 }
 
 /* 검색창 */
@@ -305,86 +307,87 @@ a.dropdown-item {
 </style>
 
 <head>
-   <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-<!-- 헤더 시작    -->
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+<!-- 헤더 시작	 -->
 <header>
 <nav class="navbar container navbar-expand-lg nav-color">
-     <input type="image" name="button" src="./images/ㄹㅇ공룡.png" width="100" height="100">
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item"> <a class="nav-link" href="#">TOP</a> </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">대여목록</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="./category/CategoryDT.do?category='컴퓨터'">컴퓨터</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category='TV/영상가전'">TV/영상가전</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category='음향기기'">음향기기</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category='콘솔/게이밍'">콘솔/게이밍</a>
-           <a class="dropdown-item" href="./category/CategoryDT.do?category='카메라'">카메라</a>
-         </div>
-        </li>
-        <li class="nav-item"> <a class="nav-link" href="#">커뮤니티</a> </li>
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">고객센터</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="#">공지사항</a>
-           <a class="dropdown-item" href="#">QnA</a>
-         </div>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="#">로그인/회원가입</a>
-           <a class="dropdown-item" href="#">회원정보</a>
-         </div>
-        </li>
-      
-      <!-- 검색창/돋보기 -->
-      <li>
-      <form id="content">
-         <!-- 돋보기 아이콘(원형) -->
-         <input type="text" name="input1" class="input1" id="search-input"
-                        style="margin-top: 35px; margin-right: 0px;
-                         margin-left: 100px; border-top-width: 4px;">
-         <!-- 돋보기 아이콘(막대기) -->           
-         <button type="reset" class="search" id="search-btn"
-               style="left: 100px; top: 33px;">
-         </button>
-      </form>
-      </li>
-      </ul>
-     </div>
-    </nav>
+	  <a href="/ecoshaur/"><img src="./images/ㄹㅇ공룡.png" width="100" height="100"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+		<ul class="navbar-nav">
+	     <li class="nav-item"> <a class="nav-link" href="#">TOP</a> </li>
+		  <li class="nav-item dropdown">
+		  	<a class="nav-link" href="Category.do" id="navbarDropdown" role="button">대여목록</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="./CategoryDT.do?category=컴퓨터">컴퓨터</a>
+			  <a class="dropdown-item" href="./CategoryDT.do?category=TV/영상가전">TV/영상가전</a>
+			  <a class="dropdown-item" href="./CategoryDT.do?category=음향기기">음향기기</a>
+			  <a class="dropdown-item" href="./CategoryDT.do?category=콘솔/게이밍">콘솔/게이밍</a>
+			  <a class="dropdown-item" href="./CategoryDT.do?category=카메라">카메라</a>
+			</div>
+		  </li>
+		  <li class="nav-item"> <a class="nav-link" href="#">커뮤니티</a> </li>
+		   <li class="nav-item dropdown">
+		  	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">고객센터</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="#">공지사항</a>
+			  <a class="dropdown-item" href="#">QnA</a>
+			</div>
+		  </li>
+		  <li class="nav-item dropdown">
+		  	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="#">로그인/회원가입</a>
+			  <a class="dropdown-item" href="#">회원정보</a>
+			</div>
+		  </li>
+		
+		<!-- 검색창/돋보기 -->
+		<li>
+		<form id="content">
+			<!-- 돋보기 아이콘(원형) -->
+			<input type="text" name="input1" class="input1" id="search-input"
+	   	   	   	   style="margin-top: 35px; margin-right: 0px;
+    	      		      margin-left: 100px; border-top-width: 4px;">
+			<!-- 돋보기 아이콘(막대기) -->			  
+			<button type="reset" class="search" id="search-btn"
+					style="left: 100px; top: 33px;">
+			</button>
+		</form>
+		</li>
+		</ul>
+	  </div>
+	 </nav>
  
     <!-- 검색 기능 -->
-   <script>
-      const input = document.getElementById("search-input");
-      const searchBtn = document.getElementById("search-btn");
-      const expand = () => {
-         searchBtn.classList.toggle("close");
-         input.classList.toggle("square");
-      };
-      searchBtn.addEventListener("click", expand);
-   </script>
+	<script>
+		const input = document.getElementById("search-input");
+		const searchBtn = document.getElementById("search-btn");
+		const expand = () => {
+			searchBtn.classList.toggle("close");
+			input.classList.toggle("square");
+		};
+		searchBtn.addEventListener("click", expand);
+	</script>
     </header>
 </head>
 
 
 <!-- 메인카테고리 끝 -->
 
-<body>     
+<body>
 <!-- container 시작 -->
 <div class="container-fluid bg-3 text-center">    
   <div class="row">
     <div class="col-sm-12">
     
     
+
 

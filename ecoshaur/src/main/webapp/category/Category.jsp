@@ -37,7 +37,7 @@
                             ${dto.sub_title}
                         </div>
                         <div class="card-text">
-                            ${dto.thmb_name}
+                            ${dto.product_name}
                         </div>
                     </div>
                     <div class="card-footer">

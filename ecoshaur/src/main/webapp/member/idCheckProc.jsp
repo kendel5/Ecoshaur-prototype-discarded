@@ -17,7 +17,7 @@
 <%
 	String id 		= request.getParameter("id").trim();
 	dto.setId(id);
-	int cnt = dao.duplecateID(dto);
+	int cnt = dao.duplecateID(id);
 	out.print("입력ID : <strong>" + id + "</strong>");
 	if(cnt == 0){
 		out.print("<p>사용 가능한 아이디입니다</p>");

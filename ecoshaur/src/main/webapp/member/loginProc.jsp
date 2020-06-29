@@ -21,11 +21,11 @@ dto.setId(id);
 dto.setPw(pw);
 String grade=dao.loginProc(dto);
 if(grade==null){
-	  out.println("<p>아이디/비번 다시 한번 확인해주세요!!</p>");
+	  out.println("<p>아이디/비번 다시 한번 확인해주세요!</p>");
 	  out.println("<p><a href='javascript:history.back()'>[다시시도]</a></p>");
 	}else{
 	  //로그인 성공
-	  //out.println(mlevel);
+	  out.println(grade);
 	  //다른페이지에서 로그인 상태를 공휴할 수 있도록
 	  session.setAttribute("s_id", id);
 	  session.setAttribute("s_pw", pw);
@@ -35,7 +35,7 @@ if(grade==null){
 	  //서버가 사용자PC에 저장하는 텍스트 파일로 된 정보
 	  //각 브라우저의 쿠키삭제의 영향을 받는다
 	 //보안에 취약
-	 //예)아이디저장, 클릭한 상품목록, 오늘창그만보기
+	 //gd
 	 String c_id=Utility.checkNull(request.getParameter("c_id"));
 	 Cookie cookie=null;
 	 if(c_id.equals("SAVE")){
@@ -56,7 +56,7 @@ if(grade==null){
 	  
 	  //첫페이지로 이동
 	  String root=Utility.getRoot();//myweb
-	  response.sendRedirect(root+"./index.jsp");
+	  response.sendRedirect(root+"/index.jsp");
 	}//if end
 %>
 

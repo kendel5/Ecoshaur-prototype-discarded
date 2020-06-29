@@ -27,5 +27,73 @@ public class MemberDAO {
 
     public MemberDAO() { }
 
-    
+    public String loginProc(MemberDTO dto) {
+	    String grade=null;
+	    try{
+		con=dbopen.getConnection();
+	      sql=new StringBuilder();
+	      sql.append(" SELECT grade ");
+	      sql.append(" FROM member ");
+	      sql.append(" WHERE id=? AND pw=? ");
+	      sql.append(" AND grade IN ('U', 'S', 'P', 'D','W','M') ");
+	      pstmt=con.prepareStatement(sql.toString());
+	      pstmt.setString(1, dto.getId());
+	      pstmt.setString(2, dto.getPw());
+	      rs= pstmt.executeQuery();
+	      if(rs.next()){
+	          grade=rs.getString("grade");
+	      }else{
+	          grade=null;
+	      }//if end
+	    }catch(Exception e){
+	      System.out.println("로그인실패:" + e);
+	    }finally {
+	      DBClose.close(con, pstmt, rs);
+	    }//try end
+	    return grade;  
+	  }//loginProc() end
+	
+	public int duplecateID(String id) {
+	    int cnt=0;
+	    try {
+	      con=dbopen.getConnection();          
+	      sql=new StringBuilder();
+	      sql.append(" SELECT COUNT(id) as cnt");
+	      sql.append(" FROM member");
+	      sql.append(" WHERE id=?");
+	      pstmt=con.prepareStatement(sql.toString());
+	      pstmt.setString(1, id);
+	      rs=pstmt.executeQuery();
+	      if(rs.next()) {
+	        cnt=rs.getInt("cnt");
+	      }
+	    }catch (Exception e) {
+	      System.out.println("아이디 중복 확인 실패 : " + e);
+	    }finally {
+	      DBClose.close(con, pstmt, rs);
+	    }//try end
+	    return cnt;
+	  }//duplecateID() end
+	
+	public int duplecateEmail(String email) {
+	    int cnt=0;
+	    try {
+	      con=dbopen.getConnection();          
+	      sql=new StringBuilder();
+	      sql.append(" SELECT COUNT(email) as cnt");
+	      sql.append(" FROM member");
+	      sql.append(" WHERE email=?");
+	      pstmt=con.prepareStatement(sql.toString());
+	      pstmt.setString(1, email);
+	      rs=pstmt.executeQuery();
+	      if(rs.next()) {
+	        cnt=rs.getInt("cnt");
+	      }
+	    }catch (Exception e) {
+	      System.out.println("이메일 중복 확인 실패 : " + e);
+	    }finally {
+	      DBClose.close(con, pstmt, rs);
+	    }//try end
+	    return cnt;
+	  }//duplecateID() end
 }

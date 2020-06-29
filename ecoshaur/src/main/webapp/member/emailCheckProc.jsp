@@ -17,7 +17,7 @@
 <%
 	String email 		= request.getParameter("email").trim();
 	dto.setEmail(email);
-	int cnt = dao.duplecateEmail(dto);
+	int cnt = dao.duplecateEmail(email);
 	out.print("입력 email : <strong>" + email + "</strong>");
 	if(cnt == 0){
 		out.print("<p>사용 가능한 이메일입니다</p>");

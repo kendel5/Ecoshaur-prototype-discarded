@@ -345,7 +345,7 @@ a.dropdown-item {
 		  <li class="nav-item dropdown">
 		  	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			  <a class="dropdown-item" href="member/Login.jsp">로그인/회원가입</a>
+			  <a class="dropdown-item" href="member/loginForm_1.jsp">로그인/회원가입</a>
 			  <a class="dropdown-item" href="member/Mypage.jsp">회원정보</a>
 			</div>
 		  </li>

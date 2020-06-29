@@ -16,7 +16,7 @@
 	<h3>이메일 중복확인</h3>
 	<br>
 	<form method="post"
-		  action="emailCheckProc.do"
+		  action="emailCheckProc.jsp"
 		  onsubmit="return blankCheck(this)">
 		이메일:
 		<input type='text' name='email' autofocus>

@@ -316,7 +316,7 @@ a.dropdown-item {
 <!-- 헤더 시작	 -->
 <header>
 <nav class="navbar container navbar-expand-lg nav-color">
-	  <a href="/ecoshaur/"><img src="./images/ㄹㅇ공룡.png" width="100" height="100"></a>
+	  <a href="/ecoshaur/"><img src="../images/ㄹㅇ공룡.png" width="100" height="100"></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	  </button>

@@ -9,7 +9,7 @@ import net.utility.Utility;
 
 @Controller
 public class NoticeCont {
-
+//kk
   @Autowired
   NoticeDAO dao;
 

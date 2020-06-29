@@ -10,7 +10,6 @@
 
 <!-- 본문 시작 pointList.jsp-->
 <!-- <p>게시판</p><br> -->
-
 <%
   ArrayList<PointDTO> list=dao.list();
   if(list==null){
@@ -31,7 +30,7 @@
       dto=list.get(i);
 %>
       <tr>
-         <td><%=dto.getNo()%></td>
+      	 <td><%=dto.getNo()%></td>
          <td><%=dto.getId()%></td>
          <td><%=dto.getPoint()%></td>
          <td><%=dto.getDate().substring(0,10)%></td>
@@ -41,6 +40,5 @@
     out.print("</table>");    
   }//if end
 %>
-
 <!-- 본문 끝 -->			
 <%@ include file="../footer.jsp" %>

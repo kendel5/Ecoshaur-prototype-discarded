@@ -9,43 +9,43 @@ public class PointDTO {
   public PointDTO() {
   }
 
-  public PointDTO(int no, String id, int point, String date) {
-    this.no = no;
-    this.id = id;
-    this.point = point;
-    this.date = date;
-  }
+public int getNo() {
+	return no;
+}
 
-  public int getNo() {
-    return no;
-  }
+public void setNo(int no) {
+	this.no = no;
+}
 
-  public void setNo(int no) {
-    this.no = no;
-  }
+public String getId() {
+	return id;
+}
 
-  public String getId() {
-    return id;
-  }
+public void setId(String id) {
+	this.id = id;
+}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+public int getPoint() {
+	return point;
+}
 
-  public int getPoint() {
-    return point;
-  }
+public void setPoint(int point) {
+	this.point = point;
+}
 
-  public void setPoint(int point) {
-    this.point = point;
-  }
+public String getDate() {
+	return date;
+}
 
-  public String getDate() {
-    return date;
-  }
+public void setDate(String date) {
+	this.date = date;
+}
 
-  public void setDate(String date) {
-    this.date = date;
-  }
+@Override
+public String toString() {
+	return "PointDTO [no=" + no + ", id=" + id + ", point=" + point + ", date=" + date + "]";
+}
+
+
 
 }

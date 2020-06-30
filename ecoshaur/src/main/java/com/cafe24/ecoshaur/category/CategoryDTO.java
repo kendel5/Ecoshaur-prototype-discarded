@@ -5,7 +5,7 @@ public class CategoryDTO {
   private String minor;
   private String code;
   
-  public CategoryDTO() { }
+  public CategoryDTO() { } //  11
 
   public CategoryDTO(String major, String minor, String code) {
     this.major = major;

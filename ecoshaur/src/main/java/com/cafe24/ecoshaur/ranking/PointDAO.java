@@ -32,9 +32,18 @@ public class PointDAO {
   		  PointDTO dto = new PointDTO();
   		  con=dbopen.getConnection();
   	      sql=new StringBuilder();
+  	      //포인트 테이블 목록
   	      sql.append(" SELECT no, id, point, date ");
   	      sql.append(" FROM point ");
-  	      sql.append(" ORDER BY point ASC ");
+  	      sql.append(" ORDER BY point DESC ");
+  	      
+  	      /*쿼리 조인문
+  	      sql.append(" SELECT m.pro_name, m.mem_name, p.point, m.grade ");
+  	      sql.append(" FROM point AS p ");
+  	      sql.append(" JOIN member AS m ");
+  	      sql.append(" ON p.id = m.id ");
+		  */
+  	      
   	      pstmt=con.prepareStatement(sql.toString());
   	      rs=pstmt.executeQuery();
   	      if(rs.next()){

@@ -12,6 +12,7 @@
 <%-- <div class="container">
    <div class="row">
       <c:forEach var="dto" items="${list}">
+<<<<<<< Updated upstream
          <table class="table ta"
                     <span>넘버 : ${dto.no}</span><br>
                 	<span>ID : ${dto.id}</span><br>
@@ -20,6 +21,22 @@
                  </div>
             </div>
         </div>
+=======
+		<table class="table table-hover">
+			<tr>
+				<th>프로필사진</th>
+				<th>닉네임</th>
+				<th>포인트</th>
+				<th>등급</th>
+			</tr>
+			<tr>
+             	<td>${dto.pro_name}</td>
+             	<td>${dto.mem_name}</td>
+             	<td>${dto.point}
+            	<td>${dto.grade}</td>
+			</tr>
+		</table>
+>>>>>>> Stashed changes
      </c:forEach>
    </div>
 </div> --%>A 

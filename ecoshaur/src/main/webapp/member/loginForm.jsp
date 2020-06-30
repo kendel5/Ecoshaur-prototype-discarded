@@ -1,20 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="ssi.jsp"%>
 <%@ include file="auth.jsp"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="../eco.jsp"%>
 
 <style>
-p {
-    font-family: "Nanum Gothic", sans-serif;
-    font-size: 30px;
-    font-weight: 800;
-   }
-   
-    body {
-       color: #999;
-	   font-family: 'Varela Round', sans-serif;
-	}
-	
 
 	.form-control {
 		box-shadow: none;
@@ -82,6 +71,7 @@ p {
     }
     .login-form input[type="checkbox"] {
         margin-top: 2px;
+        ma
     }
     .login-form .forgot-link {
         float: right;
@@ -96,7 +86,6 @@ p {
 </style>
 
 <!-- 본문시작 loginForm.jsp -->
-<br><br><br><p>로그인</p><br>
 <%
   if(s_id.equals("guest") || s_passwd.equals("guest") || s_mlevel.equals("guest")) {
     //로그인을 하지 않은 경우

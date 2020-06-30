@@ -12,9 +12,7 @@
 <div class="container">
    <div class="row">
       <c:forEach var="dto" items="${list}">
-         <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-            <div class="card">
-                <div class="card-footer">
+         <table class="table ta"
                     <span>넘버 : ${dto.no}</span><br>
                 	<span>ID : ${dto.id}</span><br>
                 	<span>포인트 : ${dto.point}</span><br>

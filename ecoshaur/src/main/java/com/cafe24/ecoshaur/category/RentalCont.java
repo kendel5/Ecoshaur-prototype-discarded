@@ -72,25 +72,52 @@ public ModelAndView Rental_resister() {
 }// CategoryList() end
 
  @RequestMapping(value = "Rental_resister.do", method = RequestMethod.POST)
- public ModelAndView createProc(RentalDTO dto, HttpServletRequest req,
-                                              HttpSession session,
-                                              HttpServletResponse resp) {
+ public ModelAndView createProc(RentalDTO dto, HttpServletRequest req, String ctCode) {
    ModelAndView mav = new ModelAndView();
-   mav.setViewName("category/Rental_resister");
+   mav.setViewName("category/Category");
    mav.addObject("root", Utility.getRoot());
+   
+   String code = dao.category_code(ctCode);
+   dto.setCategory_code(code);
+
+   // 상품목록번호 작업
+   String number = dao.Max_code(code);        // 카테고리코드에 해당하는 상품목록번호 최대값 가져오기
+   String max_num = number.substring(7, 13);  // 번호부분만 가져오기
+   int Int_maxNum = Integer.parseInt(max_num); // 번호를 정수로 바꾸기
+   String max_number = String.format("%06d", Int_maxNum+1); // 000001 형식으로 바꾸기
+   String product_no = code + "-"  + max_number;
+   dto.setProduct_no(product_no);
+
+   
 //---------------------------------------------------------------------------
    String basePath = req.getRealPath("/category/storage");
-   
+
    MultipartFile PosterMF = dto.getPosterMF();
    String poster = UploadSaveManager.saveFileSpring30(PosterMF, basePath);
    dto.setThmb_name(poster);
-   MultipartFile filenameMF = dto.getFilenameMF();
+   dto.setThmb_size(PosterMF.getSize());
+   
+   MultipartFile filenameMF = dto.getFilenameMF();  
    String image = UploadSaveManager.saveFileSpring30(filenameMF, basePath);
    dto.setImage_name(image);
+   dto.setImage_size(filenameMF.getSize());
 //---------------------------------------------------------------------------
-   
-  
+   dto.setCategory_code(dao.category_code(ctCode));
+
+   int cnt = dao.create(dto);
+
    return mav;
  }// createProc() end
 
+ 
+ 
+ 
+ @RequestMapping(value = "RentalRead.do", method = RequestMethod.GET)
+ public ModelAndView Rental_Read(String category) {
+   ModelAndView mav = new ModelAndView();
+   mav.setViewName("category/RentalRead");   
+   
+   return mav;
+ }// CategoryList() end
+ 
 }

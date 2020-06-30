@@ -6,7 +6,13 @@ public class PointDTO {
   private int point;
   private String date;
 
-  public PointDTO() {
+  public PointDTO() {}
+  
+  public PointDTO(int no, String id, int point, String date) {
+	  this.no = no;
+	  this.id = id;
+	  this.point = point;
+	  this.date = date;
   }
 
 public int getNo() {
@@ -40,12 +46,5 @@ public String getDate() {
 public void setDate(String date) {
 	this.date = date;
 }
-
-@Override
-public String toString() {
-	return "PointDTO [no=" + no + ", id=" + id + ", point=" + point + ", date=" + date + "]";
-}
-
-
 
 }

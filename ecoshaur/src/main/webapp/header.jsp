@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="/view/color.jspf" %>
+
 
 
 <!DOCTYPE html>
@@ -316,7 +316,7 @@ a.dropdown-item {
 <!-- 헤더 시작	 -->
 <header>
 <nav class="navbar container navbar-expand-lg nav-color">
-	  <a href="/ecoshaur/"><img src="./images/ㄹㅇ공룡.png" width="100" height="100"></a>
+	  <a href="/ecoshaur/"><img src="../images/ㄹㅇ공룡.png" width="100" height="100"></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -378,9 +378,16 @@ a.dropdown-item {
 	</script>
     </header>
 </head>
-
-
 <!-- 메인카테고리 끝 -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 <body>
 <!-- container 시작 -->

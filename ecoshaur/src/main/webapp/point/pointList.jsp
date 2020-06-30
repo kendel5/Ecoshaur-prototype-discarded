@@ -9,7 +9,7 @@
 
 <!-- 본문 시작 pointList.jsp-->
 <!-- <p>게시판</p><br> -->
-<div class="container">
+<%-- <div class="container">
    <div class="row">
       <c:forEach var="dto" items="${list}">
          <table class="table ta"
@@ -22,7 +22,7 @@
         </div>
      </c:forEach>
    </div>
-</div>
+</div> --%>
 
 
 <!-- 본문 끝 -->			

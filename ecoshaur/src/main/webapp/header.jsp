@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="/view/color.jspf" %>
 
-
+<script src="../js/myscript.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,6 +22,15 @@ header{
 	top:0;
 	z-index:11;
 	font-color:white;
+}
+.footer1 {
+   width:100%;
+   height:100px;
+   position:absolute;
+   bottom:0;
+   background:#5eaeff;
+  text-align: center;
+  color: white;
 }
 .banner {
 	height:100vh;

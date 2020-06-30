@@ -17,6 +17,9 @@ nav.category .list .menu>li>a:hover{ color:#007eff;font-weight:bold;}
 nav.category .list .menu>li.active>a:before{ position:absolute; left:-1px; top:5px; width:4px; height:20px; display:block; background-color:#007eff; content:""; }
 
 
+.pro-details .nav-item{
+    height:50px;
+}
 
 
 

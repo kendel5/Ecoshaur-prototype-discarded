@@ -69,7 +69,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return list;
-    }// list() end
+    }
     
   //세부목록
     public ArrayList<RentalDTO> listDT(String category) {
@@ -120,7 +120,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return list;
-    }// listDT() end
+    }
     
     
     
@@ -165,7 +165,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return category_list;
-    }// category() end
+    }
     
     
     
@@ -215,7 +215,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return list;
-    }// listDT() end
+    }
    
     
     // 소분류 가져오기(리스트가져오기)
@@ -246,7 +246,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return category_list;
-    }// category() end
+    }
 
     
  // 카테고리 소분류로 코드 가져오기
@@ -270,7 +270,53 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return code;
-    }// category() end 
+    } 
+    
+    // 카테고리 코드 가져오기
+    public String rental_code(String product_no) {
+      String code = null;
+      try {
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT category_code ");
+        sql.append(" FROM RENTAL_LIST ");
+        sql.append(" WHERE product_no = ? ");
+        pstmt = con.prepareStatement(sql.toString());
+        pstmt.setString(1, product_no);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          code = rs.getString("category_code");
+        }
+      } catch (Exception e) {
+        System.out.println("카테고리 코드가져오기 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return code;
+    } 
+    
+    // 카테고리 코드로 소분류 가져오기
+    public String category_minor(String code) {
+      String minor = null;
+      try {
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT minor ");
+        sql.append(" FROM RENTAL_CATEGORY ");
+        sql.append(" WHERE code = ? ");
+        pstmt = con.prepareStatement(sql.toString());
+        pstmt.setString(1, code);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          minor = rs.getString("minor");
+        }
+      } catch (Exception e) {
+        System.out.println("소분류가져오기 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return minor;
+    } 
     
     //해당 소분류의 코드번호 max가져오기
     public String Max_code(String code) {
@@ -297,7 +343,7 @@ public class RentalDAO {
         DBClose.close(con, pstmt, rs);
       }
       return num;
-    }// category() end 
+    } 
     
     
     // 상품등록
@@ -332,7 +378,88 @@ public class RentalDAO {
         dbclose.close(con, pstmt);
       }
       return cnt;
-    }// create() end
+    }
 
     
+    
+ // 상품상세보기에서 좋아요 수 가져오기
+    public int Rental_good(String no) {
+      int count = 0;
+      try {
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT count(no) count ");
+        sql.append(" FROM RATING ");
+        sql.append(" WHERE (NO = ?) and (EVALUATION = 'Good') ");
+        pstmt = con.prepareStatement(sql.toString());
+        pstmt.setString(1, no);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          count = rs.getInt("count");
+        }
+      } catch (Exception e) {
+        System.out.println("좋아요 수 가져오기 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return count;
+    } 
+    
+    // 상품상세보기에서 싫어요 수 가져오기
+    public int Rental_bad(String no) {
+      int count = 0;
+      try {
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT count(no) count ");
+        sql.append(" FROM RATING ");
+        sql.append(" WHERE (no = ?) and (Evaluation = 'Bad') ");
+        pstmt = con.prepareStatement(sql.toString());
+        pstmt.setString(1, no);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          count = rs.getInt("count");
+        }
+      } catch (Exception e) {
+        System.out.println("싫어요 수 가져오기 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return count;
+    } 
+    
+    
+    //상세보기
+    public RentalDTO Read(String product_no) {
+      RentalDTO dto = new RentalDTO();
+      try {
+        con = dbopen.getConnection();
+        sql = new StringBuilder();
+        sql.append(" SELECT product_no, title, sub_title, description, product_name, price_daily, deposit, total_quantity, remaining_quantity, thmb_name, category_code, id ");
+        sql.append(" FROM RENTAL_LIST ");
+        sql.append(" WHERE product_no = ? ");
+        pstmt = con.prepareStatement(sql.toString());
+        pstmt.setString(1, product_no);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+          dto.setProduct_no(rs.getString("product_no"));
+          dto.setTitle(rs.getString("title"));
+          dto.setSub_title(rs.getString("sub_title"));
+          dto.setDescription(rs.getString("description"));
+          dto.setProduct_name(rs.getString("product_name"));
+          dto.setPrice_daily(rs.getInt("price_daily"));
+          dto.setDeposit(rs.getInt("deposit"));
+          dto.setTotal_quantity(rs.getInt("total_quantity"));
+          dto.setRemaining_quantity(rs.getInt("remaining_quantity"));
+          dto.setThmb_name(rs.getString("thmb_name"));
+          dto.setCategory_code(rs.getString("category_code"));
+          dto.setId(rs.getString("id"));
+        }
+      } catch (Exception e) {
+        System.out.println("상세보기 가져오기 실패:" + e);
+      } finally {
+        DBClose.close(con, pstmt, rs);
+      }
+      return dto;
+    } 
 }

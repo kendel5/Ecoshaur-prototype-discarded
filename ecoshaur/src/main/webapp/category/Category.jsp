@@ -5,7 +5,7 @@
 <link href="css/category.css" rel="stylesheet" type="text/css">
 
 
-
+<!-- 깃 테스트 -->
 
 <!-- 본문 시작 template.jsp-->
 <br><br><br><br><br><br><br><br>
@@ -32,7 +32,7 @@
                 <div class="card">
                     <img class="card-img-top" src="category/storage/${dto.thmb_name}">
                     <div class="card-block">
-                        <h4 class="card-title"><a href="#">${dto.title}</a></h4>
+                        <h4 class="card-title"><a href="RentalRead.do?product_no=${dto.product_no}">${dto.title}</a></h4>
                         <div class="meta">
                             ${dto.sub_title}
                         </div>
@@ -43,7 +43,7 @@
                     <div class="card-footer">
                         <span>일일대여료 : ${dto.price_daily}</span><br>
                         <span>보증금 : ${dto.deposit}</span><br>
-                        <span>수량 : ${dto.total_quantity}/${dto.remaining_quantity}</span>
+                        <span>수량 : ${dto.remaining_quantity}/${dto.total_quantity}</span>
                     </div>
                 </div>
             </div>

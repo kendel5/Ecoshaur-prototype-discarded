@@ -1,6 +1,9 @@
 package com.cafe24.ecoshaur.category;
 
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +24,6 @@ import net.utility.Utility;
 public class RentalCont {
   @Autowired
   private RentalDAO dao;
-  
 
   public RentalCont() {}
   
@@ -109,4 +111,32 @@ public ModelAndView Rental_resister() {
    return mav;
  }// createProc() end
 
+ 
+ 
+ 
+ @RequestMapping(value = "RentalRead.do", method = RequestMethod.GET)
+ public ModelAndView Rental_Read(String product_no) {
+   ModelAndView mav = new ModelAndView();
+   mav.setViewName("category/RentalRead");   
+   
+   // 좋아요, 싫어요 퍼센트
+   double good = dao.Rental_good(product_no); // 좋아요 수 가져오기
+   double bad = dao.Rental_bad(product_no);   // 싫어요 수 가져오기
+   double sum = good + bad;           
+   good = good / sum * 100;                 // 좋아요 수 퍼센트
+   good = Integer.parseInt(String.valueOf(Math.round(good))); // 정수로 바꾸기
+   if(good != 0)
+     bad = 100 - good;
+   else
+     bad = 0;
+   mav.addObject("good", good);
+   mav.addObject("bad", bad);
+   ////////////////////////////////////////////////////////////////////
+   mav.addObject("dto", dao.Read(product_no));
+   String code = dao.rental_code(product_no);
+   mav.addObject("code", dao.category_minor(code));
+   
+   return mav;
+ }// CategoryList() end
+ 
 }

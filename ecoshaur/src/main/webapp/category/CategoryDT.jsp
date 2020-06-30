@@ -33,7 +33,7 @@
 				<c:choose><c:when test="${cg eq '카메라'}"> <li class="active"><a href="CategoryDT.do?category=카메라">카메라</a></li> </c:when>
 				<c:otherwise> <li><a href="CategoryDT.do?category=카메라">카메라</a></li> </c:otherwise> </c:choose>
 			</ul>
-			<form method="post" action="CategoryDT.do">
+			<form method="post" action="CategoryDT.do" onsubmit="return searchCheck(this)">
 			<table align="center">
 				<tr class="checktd">
 				<c:forEach var="cdto" items="${category}">
@@ -46,9 +46,6 @@
 					<input type="submit" class="btn sm red btnApply" value="적용">
 				</form>
 			</div>
-
-			
-			
 		</div>
 	</nav>
         <div class="row">
@@ -58,7 +55,7 @@
                 <div class="card">
                     <img class="card-img-top" src="category/storage/${dto.thmb_name}">
                     <div class="card-block">
-                        <h4 class="card-title"><a href="#">${dto.title}</a></h4>
+                        <h4 class="card-title"><a href="RentalRead.do?product_no=${dto.product_no}">${dto.title}</a></h4>
                         <div class="meta">
                             ${dto.sub_title}
                         </div>
@@ -69,12 +66,13 @@
                     <div class="card-footer">
                         <span>일일대여료 : ${dto.price_daily}</span><br>
                         <span>보증금 : ${dto.deposit}</span><br>
-                        <span>수량 : ${dto.total_quantity}/${dto.remaining_quantity}</span>
+                        <span>수량 : ${dto.remaining_quantity}/${dto.total_quantity}</span>
                     </div>
                 </div>
             </div>
             
         </c:forEach>
+        
         </div>
 </div>
 
